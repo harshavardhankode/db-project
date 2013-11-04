@@ -1,0 +1,11 @@
+<web-app>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>/login.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
