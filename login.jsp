@@ -1,33 +1,23 @@
 <html>
 <head>
  <title>IIT Bombay Electronics Database Login</title>
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+   <%@ include file="dist/css/bootstrap.min.css" %>
+   <%@ include file="dist/signin.css" %>
+  </style>
 </head>
 
-<body bgcolor="#FFFFFF" onLoad="document.loginForm.username.focus()">
- <table width="500" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-   <td>
-    <table width="500" border="0" cellspacing="0" cellpadding="0">
+<body>
 
-     <form name="loginForm" method="post" action="loginCheck.jsp">
-     <tr>
-      <td width="401"><div align="right">User Name: </div></td>
-      <td width="399"><input type="text" name="username"></td>
-     </tr>
-     <tr>
-      <td width="401"><div align="right">Password: </div></td>
-      <td width="399"><input type="password" name="password"></td>
-     </tr>
-     <tr>
-      <td width="401"> </td>
-      <td width="399"><br><input type="Submit" name="Submit" value="Login"></td>
-     </tr>
-     </form>
-
-    </table>
-   </td>
-  </tr>
- </table>
+ <div class="container">
+  <form name="loginForm" method="post" action="loginCheck.jsp" class="form-signin">
+   <h2 class="form-signin-heading">Log In</h2>
+   <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+   <input type="password" name="password" class="form-control" placeholder="Password" required>
+   <button class="btn btn-lg btn-primary btn-block" type="Submit" name="Submit" value="Login">Sign in</button>
+  </form>
+ </div>
+       
 </body>
 </html>

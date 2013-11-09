@@ -4,15 +4,19 @@
 <html>
 	<head>
 		<title> Login Check </title>
+		<style type="text/css">
+			<%@ include file="dist/css/bootstrap.min.css" %>
+			<%@ include file="dist/starter-template.css" %>
+		</style>
 	</head>
-	<body>
+	<body class="starter-template">
 		<%
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/db_project";
-				String username = "srichaitanya"; // Enter your PostgreSQL username
-				String password = "pass1234"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/nishant";
+				String username = "nishant"; // Enter your PostgreSQL username
+				String password = "newpassword"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);
@@ -30,12 +34,12 @@
 					session.setAttribute("username" , rs.getString(2) );
 					session.setAttribute("permission" , rs.getString(5) );
 		%>
-					<h1>Hello  <%=rs.getString(1) %>   </h1>
-					<h3> <a href= "interface.jsp">Continue to database interface </a> </h2>
+					<h1 >Hello  <%=rs.getString(1) %>   </h1>
+					<h3 > <a href= "interface.jsp">Continue to database interface </a> </h2>
 		<%				
 				}
 				else{
-					out.println("<h1> User not found </h1>");
+					out.println("<h1 > User not found </h1>");
 				}
 
 				myConnection.close();
@@ -49,6 +53,6 @@
 				out.print("VendorError: " + ex.getErrorCode());
 			}
 		%>
-		<a href= "login.jsp"> BACK </a>
+		<p><a href= "login.jsp"> BACK </a></p>
 	</body>
 </html>
