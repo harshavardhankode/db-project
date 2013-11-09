@@ -19,14 +19,53 @@ adminModify.jsp					B
 	Execute the statement given in any of the above interfaces
 
 
-displayProduct.jsp				I/B
+displayProduct.jsp				I/B 
 	Shows info about a produce and ability to add review also
 
 addReview.jsp					B
-	The reviee request generated above is processed
+	The review request generated above is processed
 
 login.jsp						I
 loginCheck.jsp					B
 
 home.jsp ( = search interface ?)
+
+//SCHEMA//
+
+electronis_goods:
+pid |  cost  | weight |    manf    |   pname   |  type 
+
+laptops:
+pid |  cost  | weight |  manf   |   pname  |  os   |   speakers     |  network_adaptor   |  chipset  |  battery   | screen_size | hard_disk | screen_resolution | ram_id | proc_id | gcard_id 
+
+mobile_phones:
+pid | cost  | weight |    manf    |         pname          |  os   | internal_memory |  screen_type  | sim  | screen_size | screen_resolution | ram_id | proc_id 
+
+tablets:
+ pid | cost  | weight |   manf    |   pname  |   os    | internal_memory |    screen_type   | three_g  | wifi   |    battery    | screen_size | screen_resolution | ram_id | proc_id | gcard_id 
+
+
+ram:
+ id |          size          | speed |    type   
+
+graphics_card:
+ id |  manf  | pname   | memory | type 
+
+processor:
+ id |   manf   |   pname   | cores |   clock_speed   
+
+review:
+ id |  content      | rating |         time_stamp  
+
+reviews:
+ review_id | egood_id |   username  
+
+users:
+ name     |   username    |   password    |           emailid            |  role  
+
+////////////////////////////////////////
+
+
+
+
 
