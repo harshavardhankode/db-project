@@ -1,0 +1,32 @@
+searchInterfaceMobile.jsp		I
+searchInterfaceTablet.jsp		I
+searchInterfaceLaptop.jsp		I
+	These contain the interface of searches on the attributes of the respective type
+	Implement less than, greater than for numerical types
+	For rest Implement dropdown	
+
+searchResults.jsp 				B
+	Results of a search query.
+	All the above result in a submit to this jsp which processes and gives the result
+
+
+adminInterface.jsp				I/B
+	Should be available to access only when admin session is active
+	Should give facility to add a product based on attributes	(separate jsps? )
+	Should give ability to modify users (again separate jsp? )
+
+adminModify.jsp					B
+	Execute the statement given in any of the above interfaces
+
+
+displayProduct.jsp				I/B
+	Shows info about a produce and ability to add review also
+
+addReview.jsp					B
+	The reviee request generated above is processed
+
+login.jsp						I
+loginCheck.jsp					B
+
+home.jsp ( = search interface ?)
+
