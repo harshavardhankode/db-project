@@ -36,7 +36,7 @@
 					session.setAttribute("permission" , rs.getString(5) );
 		%>
 					<h1 >Hello  <%=rs.getString(1) %>   </h1>
-					<h3 > <a href= "interface.jsp">Continue to database interface </a> </h2>
+					<h3 > <a href= "searchlaptops.jsp">Continue to database interface </a> </h2>
 		<%				
 				}
 				else{
