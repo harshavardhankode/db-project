@@ -34,7 +34,7 @@
     <input type="text" name="clock_speed" class="form-control" placeholder="Clock Speed" >
     <br><p>Graphics Card</p><br>
     <input type="text" name="g_manf" class="form-control" placeholder="Manufacturer" required>
-    <input type="text" name="g_pname" class="form-control" placeholder="Card Name" requiredgedit signup.js>
+    <input type="text" name="g_pname" class="form-control" placeholder="Card Name" required>
     <input type="text" name="g_mem" class="form-control" placeholder="Memory in GB" >
     <input type="text" name="g_type" class="form-control" placeholder="Type of memory" >
     <br>
