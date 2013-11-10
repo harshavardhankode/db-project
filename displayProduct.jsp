@@ -4,18 +4,23 @@
 <html>
 	<head>
 		<title> Product Info </title>
+		<style type="text/css">
+   			<%@ include file="dist/css/bootstrap.min.css" %>
+   			<%@ include file="dist/signin.css" %>
+  		</style>
 	</head>
 	<body>
 		<%
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/db_project";
-				String username = "srichaitanya"; // Enter your PostgreSQL username
-				String password = "pass1234"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/nishant";
+				String username = "nishant"; // Enter your PostgreSQL username
+				String password = "newpassword"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);
+
 
 				String product_id = request.getParameter("id");	
 	
@@ -43,7 +48,7 @@
 					rs.next();
 		%>			
 					<h2> Laptop Info </h2>
-					<table> 
+					<table class="table table-bordered table-striped table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs.getString("manf") %> </td> </tr>
 						<tr> <td> Product Name </td> <td> <%=rs.getString("pname") %> </td> </tr>
@@ -72,7 +77,7 @@
 					rs.next();
 		%>			
 					<h2> Mobile Phone Info </h2>
-					<table> 
+					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs.getString("manf") %> </td> </tr>
 						<tr> <td> Product Name </td> <td> <%=rs.getString("pname") %> </td> </tr>
@@ -99,7 +104,7 @@
 					rs.next();
 		%>			
 					<h2> Tablet Info </h2>
-					<table> 
+					<table class="table table-striped table-bordered table-nonfluid" > 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs.getString("manf") %> </td> </tr>
 						<tr> <td> Product Name </td> <td> <%=rs.getString("pname") %> </td> </tr>
@@ -136,8 +141,8 @@
 
 
 		%>
-					<h2> Ram Info </h2>
-					<table> 
+					<h3> RAM </h>
+					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Size </td> <td> <%=rs1.getString("size") %> </td> </tr>
 						<tr> <td> Type </td> <td> <%=rs1.getString("type") %> </td> </tr>
@@ -154,8 +159,8 @@
 
 					rs1.next();
 		%>		
-					<h2> Processor Info </h2>
-					<table> 
+					<h3> Processor </h3>
+					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs1.getString("manf") %> </td> </tr>
 						<tr> <td> Name </td> <td> <%=rs1.getString("pname") %> </td> </tr>
@@ -175,7 +180,7 @@
 					rs1.next();
 		%>		
 					<h2> Graphic card Info </h2>
-					<table> 
+					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs1.getString("manf") %> </td> </tr>
 						<tr> <td> Name </td> <td> <%=rs1.getString("pname") %> </td> </tr>

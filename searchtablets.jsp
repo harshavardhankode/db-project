@@ -2,29 +2,83 @@
 	<head>
 		<title>Tablet Search Page</title>
 		<meta charset="utf-8" />
+		<style type="text/css">
+   			<%@ include file="dist/css/bootstrap.min.css" %>
+   			<%@ include file="dist/signin.css" %>
+  		</style>
 	</head>
 	<body>
+	
+	
+	 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IEDb</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="login.jsp">Log In</a></li>
+            <li><a href="#signup" >Sign Up</a></li>            
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" >
+        
+          <ul class="nav navbar-nav">
+            <li><a href="searchlaptops.jsp">Laptops</a></li>
+            <li><a href="searchmobiles.jsp">Mobiles</a></li>
+            <li class="active"><a href="searchtablets.jsp">Tablets</a></li>            
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    
+    
 		<h1>Search for Tablets</h1>
-		<div class="search">
-		<form name="tabletSearch" method="post" action="searchResults.jsp?type=tablet">
-			<ul>
-				<li>Cost: <input type="text" name="CostMin"/> to <input type="text" name="CostMax"/></li>
-				<li>Manufacturer: <input type="text" name="Manufacturer"/></li>
-				<li>OS: <input type="text" name="OS"/></li>
-				<li>InternalMemory: <input type="text" name="InternalMemory"/></li>
-				<li>ScreenType: <input type="text" name="ScreenType"/></li>
-				<li>3G: <input type="text" name="3G"/></li>
-				<li>Wifi: <input type="text" name="Wifi"/></li>
-				<li>Battery: <input type="text" name="Battery"/></li>
-				<li>ScreenSize: <input type="text" name="ScreenSizeMin"/> to <input type="text" name="ScreenSizeMax"/></li>
-				<li>ScreenResolution: <input type="text" name="ScreenResolution"/></li>
-				<li>RamSize: <input type="text" name="RamSize"/></li>
-				<li>RamType: <input type="text" name="RamType"/></li>
-				<li>Processor Speed: <input type="text" name="ProcessorSpeed"/></li>
-				<li>Cores: <input type="text" name="Cores"/></li>
-				<li>GraphicsCard: <input type="text" name="GraphicsCard"/></li>	
+		<div class="container">
+		<form class="form-signin-heading" name="laptopSearch" method="post" action="searchResults.jsp?type=tablet">
+			
+				<input class="form-control" type="text" name="CostMin" placeholder="Mimimum cost"  autofocus/>
+				<input class="form-control"  type="text" name="CostMax" placeholder="Maximum cost"/>
+				<input class="form-control"  type="text" name="Manufacturer" placeholder="Manufacturer"/>
+				<input class="form-control"  type="text" name="OS" placeholder="OS"/>
+				<input class="form-control" type="text" name="InternalMemory" placeholder="Interal Memory"/>
+				<input class="form-control" type="text" name="ScreenType" placeholder="Screen Type"/>
+				<input class="form-control" type="text" name="3G" placeholder="3G"/>
+				<input class="form-control" type="text" name="Wifi" placeholder="Wifi"/>
+				<input class="form-control" type="text" name="Battery" placeholder="Battery"/>
+				<input class="form-control"  type="text" name="ScreenSizeMin" placeholder="Minimum Screen Size"/>
+				<input class="form-control"  type="text" name="ScreenSizeMax" placeholder="Maximum Screen Size"/>
+				<input class="form-control"  type="text" name="ScreenResolution" placeholder="Screen Resolution"/>
+				<input class="form-control"  type="text" name="RamSize" placeholder="RAM"/>
+				<input class="form-control"  type="text" name="RamType" placeholder="RAM Type"/>
+				<input class="form-control"  type="text" name="ProcessorSpeed" placeholder="Processor Clock Speed"/>
+				<input class="form-control"  type="text" name="Cores" placeholder="Cores"/>
+				<input class="form-control"  type="text" name="GraphicsCard" placeholder="Graphics Card"/>
 			</ul>
-			<input id="submit" type="SUBMIT" name="SUBMIT" value="SUBMIT"/>
+			<button class="btn btn-lg btn-primary btn-block" type="SUBMIT" name="SUBMIT" value="SUBMIT">Search</button>
 		</form>
 		</div>
 	</body>

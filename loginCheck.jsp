@@ -14,12 +14,13 @@
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/db_project";
-				String username = "srichaitanya"; // Enter your PostgreSQL username
-				String password = "pass1234"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/nishant";
+				String username = "nishant"; // Enter your PostgreSQL username
+				String password = "newpassword"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);
+
 
 				String user_in = request.getParameter("username");	
 				String pass_in = request.getParameter("password");

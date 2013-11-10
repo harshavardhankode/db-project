@@ -4,15 +4,19 @@
 <html>
 	<head>
 		<title> Product Info </title>
+		<style type="text/css">
+   			<%@ include file="dist/css/bootstrap.min.css" %>
+   			<%@ include file="dist/signin.css" %>
+  		</style>
 	</head>
 	<body>
 		<%
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/db_project";
-				String username = "srichaitanya"; // Enter your PostgreSQL username
-				String password = "pass1234"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/nishant";
+				String username = "nishant"; // Enter your PostgreSQL username
+				String password = "newpassword"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);
@@ -294,17 +298,22 @@
 					rs = s.executeQuery(query);
 
 				}
+				%>
+				<table class="table table-bordered table-striped table-nonfluid"> 
 				
+				<%
 				while(rs.next()){
 		%>		
 
-				<p> <a href = displayProduct.jsp?id=<%= rs.getString("pid")%> >   <%= rs.getString("manf")%>  <%= rs.getString("pname")%> </a>
+				<tr> <th> <a href = displayProduct.jsp?id=<%= rs.getString("pid")%> >   <%= rs.getString("manf")%>  <%= rs.getString("pname")%> </th> </tr>
 
 		<%
 
 				}
 
-
+				%>
+				</table>
+				<%
 
 				myConnection.close();
 

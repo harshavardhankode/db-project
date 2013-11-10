@@ -4,6 +4,19 @@ body {
   background-color: #eee;
 }
 
+h2 {
+   position: relative;
+   left: 30px;
+}
+.test{
+  position: fixed;
+}
+.table-nonfluid {
+   width: 400px;
+   position: relative;
+   left: 40px;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;

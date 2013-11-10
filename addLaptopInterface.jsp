@@ -12,8 +12,8 @@
  <div class="container">
   <form name="loginForm" method="post" action="addLaptop.jsp" class="form-signin">
    <h2 class="form-signin-heading">Adding a laptop</h2>
-   	<input type="text" name="manf" class="form-control" placeholder="Manufacturer"  autofocus>
-    <input type="text" name="pname" class="form-control" placeholder="Product Name" >
+   	<input type="text" name="manf" class="form-control" placeholder="Manufacturer"  autofocus required>
+    <input type="text" name="pname" class="form-control" placeholder="Product Name" required>
     <input type="text" name="cost" class="form-control" placeholder="Cost" >
     <input type="text" name="weight" class="form-control" placeholder="Weight" >
     <input type="text" name="OS" class="form-control" placeholder="Operating System" >
@@ -28,13 +28,13 @@
     <input type="text" name="ram_size" class="form-control" placeholder="Memory in GB" >
     <input type="text" name="ram_type" class="form-control" placeholder="RAM Type" >
     <br><p>Processor</p><br>
-    <input type="text" name="p_manf" class="form-control" placeholder="Manufacturer" >
-    <input type="text" name="p_pname" class="form-control" placeholder="Name" >
+    <input type="text" name="p_manf" class="form-control" placeholder="Manufacturer" required>
+    <input type="text" name="p_pname" class="form-control" placeholder="Name" required>
     <input type="text" name="cores" class="form-control" placeholder="Number of cores" >
     <input type="text" name="clock_speed" class="form-control" placeholder="Clock Speed" >
     <br><p>Graphics Card</p><br>
-    <input type="text" name="g_manf" class="form-control" placeholder="Manufacturer" >
-    <input type="text" name="g_pname" class="form-control" placeholder="Card Name" >
+    <input type="text" name="g_manf" class="form-control" placeholder="Manufacturer" required>
+    <input type="text" name="g_pname" class="form-control" placeholder="Card Name" requiredgedit signup.js>
     <input type="text" name="g_mem" class="form-control" placeholder="Memory in GB" >
     <input type="text" name="g_type" class="form-control" placeholder="Type of memory" >
     <br>
