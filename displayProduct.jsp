@@ -225,9 +225,10 @@
 		%>
 			<h2> Add a review </h2>
 			
-			<form method="post" action="addReview.jsp" >
+			<form method="post" action="addReview.jsp?pid=<%= product_id %>" >
 				<label> Rating: </label>  <input type="text" name="rating">
 				<label> Content: </label> <input type="textarea" name="content">
+				<input type="Submit" value="Add/Update Review">
 			</form>
 		<%
 
