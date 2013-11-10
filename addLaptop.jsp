@@ -8,12 +8,17 @@
 	</head>
 	<body>
 		<%!
-		public String convert_string(String s){
-			String t = "";
-			if (s.equals("")) t = "null";
-			else t = "'" + s + "'";
-			return t;		
-		} 
+			public String convert_string(String s){
+				String t = "";
+				if (s.equals("")) t = "null";
+				else t = "'" + s + "'";
+				return t;		
+			} 
+
+		%>
+
+
+		<%!
 		
 		public String convert_string_int(String s){
 			String t ="";
@@ -29,11 +34,12 @@
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/nishant";
-				String username = "nishant"; // Enter your PostgreSQL username
-				String password = "newpassword"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/db_project";
+				String username = "srichaitanya"; // Enter your PostgreSQL username
+				String password = "pass1234"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
+				//myConnection = DriverManager.getConnection(url,username,password);
 				
 				
 				
@@ -47,7 +53,7 @@
 					String pname_in = convert_string(request.getParameter("pname"));
 					String cost_in = convert_string_int(request.getParameter("cost"));	
 					String weight_in = convert_string_int(request.getParameter("weight"));
-					String os_in = convert_string(request.getParameter("os"));	
+					String os_in = convert_string(request.getParameter("OS"));	
 					String hard_disk_in = convert_string(request.getParameter("hard_disk"));	
 					String s_size_in = convert_string(request.getParameter("s_size"));	
 					String s_resol_in = convert_string(request.getParameter("s_resol"));	
@@ -119,9 +125,16 @@
 						
 					}
 					out.println("<h2>"+ g_id + "</h2>");
-
-					query = "INSERT INTO Laptops(cost, weight, manf, pname, os, speakers, network_adaptor, chipset, battery, screen_size, hard_disk, screen_resolution, ram_id, proc_id, gcard_id) VALUES(" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + speakers_in + "," + wifi_in + "," + chipset_in + "," + battery_in + "," + s_size_in + "," + hard_disk_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ");";
-					s.executeUpdate(query);
+					
+					query = "SELECT * FROM Laptops WHERE manf = " + manf_in + "AND pname = "+ pname_in;
+					rs = s.executeQuery(query);
+					if(rs.next()){
+						out.println("<h2> laptop already exists </h2>");
+					}
+					else{
+						query = "INSERT INTO Laptops(cost, weight, manf, pname, os, speakers, network_adaptor, chipset, battery, screen_size, hard_disk, screen_resolution, ram_id, proc_id, gcard_id) VALUES(" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + speakers_in + "," + wifi_in + "," + chipset_in + "," + battery_in + "," + s_size_in + "," + hard_disk_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ");";
+						s.executeUpdate(query);
+					}
 					myConnection.close();
 				}
 				
