@@ -1,3 +1,8 @@
+<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.* " %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.lang.*" %>
+<%@ page import="java.util.*" %>
+
 <html>
 	<head>
 		<title>Tablet Search Page</title>
@@ -69,31 +74,220 @@
       </div>
     </div>
     
-    
+    		<%
+			try 
+			{
+				String driver = "org.postgresql.Driver";
+				String url = "jdbc:postgresql://localhost:5432/danny";
+				String username = "danny"; // Enter your PostgreSQL username
+				String password = "dnatpostgres"; // Enter your PostgreSQL password
+				Connection myConnection = null;
+				Class.forName(driver).newInstance();
+				myConnection = DriverManager.getConnection(url,username,password);
+
+				Set<String> set_manf = new HashSet<String>();
+				Set<String> set_OS = new HashSet<String>();
+				Set<String> set_intMem = new HashSet<String>();
+				Set<String> set_scrnType = new HashSet<String>();
+				Set<String> set_scrnres = new HashSet<String>();
+				Set<String> set_ram = new HashSet<String>();
+				Set<String> set_ramType = new HashSet<String>();
+				Set<String> set_pcs = new HashSet<String>();
+				Set<String> set_cores = new HashSet<String>();
+				Set<String> set_graphcard = new HashSet<String>();
+				
+				Statement s = myConnection.createStatement();
+				String query = "SELECT * FROM tablets";
+				ResultSet rs = s.executeQuery(query);
+				
+				while(rs.next()){ 
+					if(!(rs.getString(4) == null))
+						set_manf.add(rs.getString(4));
+					if(!(rs.getString(6) == null))
+						set_OS.add(rs.getString(6));
+					if(!(rs.getString(7) == null))
+						set_intMem.add(rs.getString(7));
+					if(!(rs.getString(8) == null))
+						set_scrnType.add(rs.getString(8));
+					if(!(rs.getString(13) == null))
+						set_scrnres.add(rs.getString(13));
+				}
+
+				query = "SELECT size,type FROM ram";
+				rs = s.executeQuery(query);
+				while(rs.next()){ 
+					if(!(rs.getString(1) == null))
+						set_ram.add(rs.getString(1));	
+					if(!(rs.getString(2) == null))
+						set_ramType.add(rs.getString(2));
+				}
+				
+				query = "SELECT clock_speed,cores FROM processor";
+				rs = s.executeQuery(query);
+				while(rs.next()){
+					if(!(rs.getString(1) == null)) 
+						set_pcs.add(rs.getString(1));
+					if(!(rs.getString(2) == null))
+						set_cores.add(rs.getString(2));
+				}
+				
+				query = "SELECT manf FROM graphics_card";
+				rs = s.executeQuery(query);
+				while(rs.next()){ 
+					if(!(rs.getString(1) == null))
+						set_graphcard.add(rs.getString(1));
+				}
+					
+				
+		%>
     
 		<h1>Search for Tablets</h1>
 		<div class="container">
 		<form class="form-signin-heading" name="laptopSearch" method="post" action="searchResults.jsp?type=tablet">
 			
-				<input class="form-control" type="text" name="CostMin" placeholder="Mimimum cost"  autofocus/>
-				<input class="form-control"  type="text" name="CostMax" placeholder="Maximum cost"/>
-				<input class="form-control"  type="text" name="Manufacturer" placeholder="Manufacturer"/>
-				<input class="form-control"  type="text" name="OS" placeholder="OS"/>
-				<input class="form-control" type="text" name="InternalMemory" placeholder="Interal Memory"/>
-				<input class="form-control" type="text" name="ScreenType" placeholder="Screen Type"/>
-				<input class="form-control" type="text" name="3G" placeholder="3G"/>
-				<input class="form-control" type="text" name="Wifi" placeholder="Wifi"/>
-				<input class="form-control" type="text" name="Battery" placeholder="Battery"/>
-				<input class="form-control"  type="text" name="ScreenSizeMin" placeholder="Minimum Screen Size"/>
-				<input class="form-control"  type="text" name="ScreenSizeMax" placeholder="Maximum Screen Size"/>
-				<input class="form-control"  type="text" name="ScreenResolution" placeholder="Screen Resolution"/>
-				<input class="form-control"  type="text" name="RamSize" placeholder="RAM"/>
-				<input class="form-control"  type="text" name="RamType" placeholder="RAM Type"/>
-				<input class="form-control"  type="text" name="ProcessorSpeed" placeholder="Processor Clock Speed"/>
-				<input class="form-control"  type="text" name="Cores" placeholder="Cores"/>
-				<input class="form-control"  type="text" name="GraphicsCard" placeholder="Graphics Card"/>
+			<input class="form-control" type="text" name="CostMin" placeholder="Mimimum cost"  autofocus/>
+			<input class="form-control"  type="text" name="CostMax" placeholder="Maximum cost"/>
+
+			<select name="Manufacturer" class="form-control">
+				<option value=""> Brand </option>
+			<%
+				for(String temp : set_manf){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_manf.clear();
+			%>
+			</select>
+
+			<select name="OS" class="form-control">
+				<option value=""> Operating System </option>
+			<%
+				for(String temp : set_OS){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_OS.clear();
+			%>
+			</select>
+
+			<select name="InternalMemory" class="form-control">
+				<option value=""> Internal Memory Size </option>
+			<%
+				for(String temp : set_intMem){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_intMem.clear();
+			%>
+			</select>
+			
+			<select name="ScreenType" class="form-control">
+				<option value=""> Screen Type </option>
+			<%
+				for(String temp : set_scrnType){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_scrnType.clear();
+			%>
+			</select>
+			
+			<input class="form-control" type="text" name="3G" placeholder="3G"/>
+			<input class="form-control" type="text" name="Wifi" placeholder="Wifi"/>
+			<input class="form-control" type="text" name="Battery" placeholder="Battery"/>
+			<input class="form-control"  type="text" name="ScreenSizeMin" placeholder="Minimum Screen Size"/>
+			<input class="form-control"  type="text" name="ScreenSizeMax" placeholder="Maximum Screen Size"/>
+
+			<select name="ScreenResolution" class="form-control">
+				<option value=""> Screen Resolution </option>
+			<%
+				for(String temp : set_scrnres){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_scrnres.clear();
+			%>
+			</select>
+
+			<select name="RamSize" class="form-control">
+				<option value=""> Size of RAM </option>
+			<%
+				for(String temp : set_ram){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_ram.clear();
+			%>
+			</select>
+
+			<select name="RamType" class="form-control">
+				<option value=""> Type of RAM </option>
+			<%
+				for(String temp : set_ramType){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_ramType.clear();
+			%>
+			</select>
+
+			<select name="ProcessorSpeed" class="form-control">
+				<option value=""> Speed of Processor </option>
+			<%
+				for(String temp : set_pcs){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_pcs.clear();
+			%>
+			</select>
+
+			<select name="Cores" class="form-control">
+				<option value=""> Core </option>
+			<%
+				for(String temp : set_cores){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_cores.clear();
+			%>
+			</select>
+
+			<select name="GraphicsCard" class="form-control">
+				<option value=""> Graphics Card </option>
+			<%
+				for(String temp : set_graphcard){
+			%>
+				<option> <%= temp.trim() %> </option>
+			<% 	
+				}
+				set_graphcard.clear();
+			%>
+			</select>
 			</ul>
 			<button class="btn btn-lg btn-primary btn-block" type="SUBMIT" name="SUBMIT" value="SUBMIT">Search</button>
+		<%
+				myConnection.close();
+
+			}
+			catch(ClassNotFoundException e){out.print(e.getMessage());}
+			catch (SQLException ex)
+			{
+				out.print("SQLException: "+ex.getMessage());
+				out.print("SQLState: " + ex.getSQLState());
+				out.print("VendorError: " + ex.getErrorCode());
+			}
+			catch(Exception e){out.print(e.getMessage());}
+		%>
 		</form>
 		</div>
 	</body>
