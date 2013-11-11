@@ -1,23 +1,16 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-   
-    <style type="text/css">
-		<%@ include file="dist/css/bootstrap.min.css" %>
-		<%@ include file="dist/starter-template.css" %>
-	</style>
+<html>
+<head>
+ <title>IIT Bombay Electronics Database Login</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+   <%@ include file="dist/css/bootstrap.min.css" %>
+   <%@ include file="dist/signin.css" %>
+   <%@ include file="dist/starter-template.css" %>
+  </style>
+</head>
 
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body class="starter-template">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,9 +22,9 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-          	<li class=active><a class="navbar-brand" href="index.jsp">IEDb</a></li>
+          	<li><a class="navbar-brand" href="index.jsp">IEDb</a></li>
             <li><a href="searchlaptops.jsp">Search</a></li>
-            <li><a href="about.jsp">About</a></li>
+            <li class=active><a href="about.jsp">About</a></li>
             <% if (session.getAttribute("permission")==null) {
             %>
             <li><a href="login.jsp">Log In</a></li>
@@ -53,17 +46,23 @@
         </div>
       </div>
     </div>
-
-    <div class="container">
+    
+     <div class="container">
 
       <div class="starter-template">
         <h1>IEDb&nbsp;(IITB Electronics Database)</h1>
-        <p class="lead">This is IITB's first electronics database. </p>
+        <p class="lead">This is IITB's first electronics database. This is a project made for CS387 course.</p>
+        <p class="lead">
+        Harsha Vardhan<br>
+        Nishant Nori<br>
+        Charan Teja<br>
+        Dev Narayan<br>
+        </p>
+        
       </div>
 
     </div><!-- /.container -->
     
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="${pageContext.request.contextPath}/dist/js/bootstrap.min.js"></script>
-  </body>
+    
+</body>
 </html>

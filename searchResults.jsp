@@ -22,16 +22,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">IEDb</a>
+           
         </div>
        <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="index.jsp">IEDb</a></li>
             <li class="active"><a href="searchlaptops.jsp">Search</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.jsp">About</a></li>
             <% if (session.getAttribute("permission")==null) {
             %>
             <li><a href="login.jsp">Log In</a></li>
-            <li><a href="#signup" >Sign Up</a></li>
+            <li><a href="signup.jsp" >Sign Up</a></li>
             <%
             }
             else{
@@ -181,7 +182,7 @@
 						query = query + " AND gcard_id in (SELECT id FROM graphics_card WHERE" +gcard_query+")";
 
 					query = query + ";";
-					out.println(query);			
+					//out.println(query);			
 	
 					rs = s.executeQuery(query);
 
@@ -261,7 +262,7 @@
 
 
 					query = query + ";";
-					out.println(query);			
+					//out.println(query);			
 	
 					rs = s.executeQuery(query);
 				}
@@ -355,7 +356,7 @@
 						query = query + " AND gcard_id in (SELECT id FROM graphics_card WHERE" +gcard_query+")";
 
 					query = query + ";";
-					out.println(query);			
+					//out.println(query);			
 	
 					rs = s.executeQuery(query);
 

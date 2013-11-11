@@ -1,6 +1,6 @@
 <html>
 <head>
- <title>IIT Bombay Electronics Database Login</title>
+ <title>IIT Bombay Electronics Database Sign Up</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <style type="text/css">
    <%@ include file="dist/css/bootstrap.min.css" %>
@@ -18,12 +18,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">IEDb</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+           <li><a class="navbar-brand" href="index.jsp">IEDb</a></li>
             <li><a href="searchlaptops.jsp">Search</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.jsp">About</a></li>
             <li><a href="login.jsp">Log In</a></li>
             <li class="active"><a href="signup.jsp" >Sign Up</a></li>            
           </ul>
@@ -38,7 +38,7 @@
    <input type="text" name="emailid" class="form-control" placeholder="Email ID" required>
    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
    <input type="password" name="password" class="form-control" placeholder="Password" required>
-   <input type="password" name="password" class="form-control" placeholder="Retype Password" required>
+   <input type="password" name="repassword" class="form-control" placeholder="Retype Password" required>
    
    <button class="btn btn-lg btn-primary btn-block" type="Submit" name="Submit" value="Signup">Sign Up</button>
   </form>

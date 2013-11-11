@@ -18,12 +18,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">IEDb</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="index.jsp">IEDb</a></li>
             <li><a href="searchlaptops.jsp">Search</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.jsp">About</a></li>
             <li class="active"><a href="login.jsp">Log In</a></li>
             <li><a href="signup.jsp" >Sign Up</a></li>            
           </ul>
