@@ -23,10 +23,25 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#home">Home</a></li>
+            <li class="active"><a href="searchlaptops.jsp">Search</a></li>
             <li><a href="#about">About</a></li>
+            <% if (session.getAttribute("permission")==null) {
+            %>
             <li><a href="login.jsp">Log In</a></li>
-            <li><a href="#signup" >Sign Up</a></li>            
+            <li><a href="#signup" >Sign Up</a></li>
+            <%
+            }
+            else{
+            	if(session.getAttribute("permission").equals("admin")){		
+			%>     
+					<li><a href="addLaptopInterface.jsp" >Admin Interface</a></li>
+			<%
+					}
+			%> 
+            	<li><a >Logged In as  <%=session.getAttribute("name") %></a></li> 
+            	<li><a href="logout.jsp" >Log out</a></li>
+            <%}
+            %>            
           </ul>
         </div>
       </div>

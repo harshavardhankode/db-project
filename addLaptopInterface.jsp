@@ -5,10 +5,38 @@
   <style type="text/css">
    <%@ include file="dist/css/bootstrap.min.css" %>
    <%@ include file="dist/signin.css" %>
+   <%@ include file="dist/starter-template.css" %>
   </style>
 </head>
 
+<% if (!(session.getAttribute("permission")==null) && session.getAttribute("permission").equals("admin")){
+%>
+
 <body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IEDb</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-fixed">
+          <ul class="nav navbar-nav">
+            <li><a href="searchlaptops.jsp">Search</a></li>
+            <li><a href="#about">About</a></li>
+            <li class="active"><a href="addLaptopInterface.jsp" >Admin Interface</a></li>
+            <li><a >Logged In as  <%=session.getAttribute("name") %></a></li> 
+            <li><a href="logout.jsp" >Log out</a></li>                  
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    
  <div class="container">
   <form name="loginForm" method="post" action="addLaptop.jsp" class="form-signin">
    <h2 class="form-signin-heading">Adding a laptop</h2>
@@ -45,4 +73,52 @@
  </div>
        
 </body>
+
+<%	}
+	else{%>
+	<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">IEDb</a>
+	    </div>
+	    <div class="collapse navbar-collapse navbar-fixed">
+	      <ul class="nav navbar-nav">
+	        <li><a href="searchlaptops.jsp">Home</a></li>
+	        <li><a href="#about">About</a></li>
+	    <%	if (session.getAttribute("permission") == null){
+	    %>
+	    	<li><a href="login.jsp">Log In</a></li>
+            <li><a href="#signup" >Sign Up</a></li>      	
+	    <%	} else{
+	    %>
+	        <li><a >Logged In as  <%=session.getAttribute("name") %></a></li> 
+	        <li><a href="logout.jsp" >Log out</a></li>  
+	    <%}
+	    %>                
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="container">
+
+      <div class="starter-template">
+        <h1>You do not have the required permission.</h1>
+        <p class="lead">Only the administrators of the site can access this webpage.</p>
+      </div>
+
+    </div><!-- /.container -->
+	</body>	
+
+	
+	
+<%	}
+%>
 </html>

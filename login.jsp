@@ -22,10 +22,10 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#home">Home</a></li>
+            <li><a href="searchlaptops.jsp">Search</a></li>
             <li><a href="#about">About</a></li>
             <li class="active"><a href="login.jsp">Log In</a></li>
-            <li><a href="#signup" >Sign Up</a></li>            
+            <li><a href="signup.jsp" >Sign Up</a></li>            
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -8,6 +8,9 @@ h2 {
    position: relative;
    left: 30px;
 }
+.display{
+	background-color: #eee;
+}
 .test{
   position: fixed;
 }
@@ -15,6 +18,17 @@ h2 {
    width: 400px;
    position: relative;
    left: 40px;
+   vertical-align: middle;
+}
+
+.table-review{
+	width: 1000px;
+	position: relative;
+	left: 40px;
+}
+
+.small{
+	width=200px;
 }
 
 .form-signin {

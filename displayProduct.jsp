@@ -9,7 +9,66 @@
    			<%@ include file="dist/signin.css" %>
   		</style>
 	</head>
-	<body>
+	<body class="display">
+	
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IEDb</a>
+        </div>
+       <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="active" href="searchlaptops.jsp">Search</a></li>
+            <li><a href="#about">About</a></li>
+            <% if (session.getAttribute("permission")==null) {
+            %>
+            <li><a href="login.jsp">Log In</a></li>
+            <li><a href="#signup" >Sign Up</a></li>
+            <%
+            }
+            else{
+            	if(session.getAttribute("permission").equals("admin")){		
+			%>     
+					<li><a href="addLaptopInterface.jsp" >Admin Interface</a></li>
+			<%
+					}
+			%> 
+            	<li><a >Logged In as  <%=session.getAttribute("name") %></a></li> 
+            	<li><a href="logout.jsp" >Log out</a></li>
+            <%}
+            %>             
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" >        
+		      <ul class="nav navbar-nav">
+		        <li><a href="searchlaptops.jsp">Laptops</a></li>
+		        <li><a href="searchmobiles.jsp">Mobiles</a></li>
+		        <li><a href="searchtablets.jsp">Tablets</a></li>            
+		      </ul>
+		    </div>
+		  </div>
+		</div>
+		
+    
 		<%
 			try 
 			{
@@ -48,7 +107,7 @@
 					rs.next();
 		%>			
 					<h2> Laptop Info </h2>
-					<table class="table table-bordered table-striped table-nonfluid"> 
+					<table class="table table-bordered table-striped table-nonfluid" > 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs.getString("manf") %> </td> </tr>
 						<tr> <td> Product Name </td> <td> <%=rs.getString("pname") %> </td> </tr>
@@ -141,7 +200,8 @@
 
 
 		%>
-					<h3> RAM </h>
+					<hr>
+					<h2> RAM </h2>
 					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Size </td> <td> <%=rs1.getString("size") %> </td> </tr>
@@ -159,7 +219,8 @@
 
 					rs1.next();
 		%>		
-					<h3> Processor </h3>
+					<hr>
+					<h2> Processor </h2>
 					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs1.getString("manf") %> </td> </tr>
@@ -179,6 +240,7 @@
 			
 					rs1.next();
 		%>		
+					<hr>
 					<h2> Graphic card Info </h2>
 					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
@@ -202,7 +264,7 @@
 				Statement s2 = myConnection.createStatement();
 
 				out.println("<h2> Reviews </h2> ");
-				out.println("<table> \n <tr> <th> User </th> <th> Rating </th> <th> Review </th> <th> Timestamp </th> </tr> ");
+				out.println("<table class=\"table table-striped table-bordered table-review\"> \n <tr> <th width=\"150px\"> User </th> <th width=\"100px\"> Rating </th> <th width=\"600px\"> Review </th> <th width=\"150px\"> Timestamp </th> </tr> ");
 				while(rs.next())
 				{
 	
@@ -223,12 +285,13 @@
 			//Add a review
 
 		%>
-			<h2> Add a review </h2>
 			
-			<form method="post" action="addReview.jsp?pid=<%= product_id %>" >
-				<label> Rating: </label>  <input type="text" name="rating">
-				<label> Content: </label> <input type="textarea" name="content">
-				<input type="Submit" value="Add/Update Review">
+			<div class="container">
+  			<form name="loginForm" method="post" action="addReview.jsp?pid=<%= product_id %>" class="form-signin">
+  			<h2 class="form-signin-heading">Add a review</h2>
+  				<input type="text" name="rating" class="form-control" placeholder="Rating"  autofocus required>				
+				<textarea rows="3" name="content" class="form-control" placeholder="Review Content" ></textarea>
+				<button class="btn btn-lg btn-primary btn-block" type="Submit" name="Submit" value="Add">Add or Update Review</button>
 			</form>
 		<%
 
