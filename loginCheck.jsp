@@ -67,6 +67,7 @@
 					</div>
     				<h1  class="starter-template">Hello  <%=rs.getString(1) %>   </h1>
 					<h3  class="starter-template"> <a href= "searchlaptops.jsp">Continue to database interface </a> </h2>
+
 		<%				
 				}
 				else{

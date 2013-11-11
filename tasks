@@ -1,11 +1,15 @@
+CSS
+	-Topbar
+
 Dropdowns
 
 Admin Interface
+	-Users
+	-Tablets, Mobiles
+	-Deleting a product
 
-CSS
+Foreign Key
+	- Setnull/Cascade
 
-Add Review 
 
-Logout 
-
-Register
+Script for autofilling header?
