@@ -30,11 +30,11 @@ CREATE TABLE graphics_card (id SERIAL PRIMARY KEY, manf VARCHAR(100) NOT NULL, p
 
 CREATE TABLE Electronic_Goods (PID SERIAL PRIMARY KEY, cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, type CHAR(6) NOT NULL CHECK (type = 'laptop' OR type = 'mobile' OR type = 'tablet' OR type = 'miscel'));
 
-CREATE TABLE Laptops (pid INTEGER DEFAULT 1 PRIMARY KEY REFERENCES Electronic_Goods(pid), cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, os VARCHAR(100), speakers VARCHAR(100),network_adaptor VARCHAR(100), chipset VARCHAR(100), battery VARCHAR(100), screen_size VARCHAR(100), hard_disk VARCHAR(100), screen_resolution VARCHAR(100), ram_id INTEGER REFERENCES RAM(id), proc_id INTEGER REFERENCES processor(id), gcard_id INTEGER REFERENCES graphics_card(id));
+CREATE TABLE Laptops (pid INTEGER DEFAULT 1 PRIMARY KEY REFERENCES Electronic_Goods(pid) ON DELETE CASCADE ON UPDATE CASCADE, cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, os VARCHAR(100), speakers VARCHAR(100),network_adaptor VARCHAR(100), chipset VARCHAR(100), battery VARCHAR(100), screen_size VARCHAR(100), hard_disk VARCHAR(100), screen_resolution VARCHAR(100), ram_id INTEGER REFERENCES RAM(id) ON DELETE SET NULL ON UPDATE CASCADE, proc_id INTEGER REFERENCES processor(id) ON DELETE SET NULL ON UPDATE CASCADE, gcard_id INTEGER REFERENCES graphics_card(id) ON DELETE SET NULL ON UPDATE CASCADE);
 
-CREATE TABLE Mobile_Phones (pid INTEGER DEFAULT 1 PRIMARY KEY REFERENCES Electronic_Goods(pid), cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, os VARCHAR(100), internal_memory VARCHAR(100),screen_type VARCHAR(100), sim VARCHAR(100), screen_size VARCHAR(100), screen_resolution VARCHAR(100), ram_id INTEGER REFERENCES RAM(id), proc_id INTEGER REFERENCES processor(id));
+CREATE TABLE Mobile_Phones (pid INTEGER DEFAULT 1 PRIMARY KEY REFERENCES Electronic_Goods(pid) ON DELETE CASCADE ON UPDATE CASCADE, cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, os VARCHAR(100), internal_memory VARCHAR(100),screen_type VARCHAR(100), sim VARCHAR(100), screen_size VARCHAR(100), screen_resolution VARCHAR(100), ram_id INTEGER REFERENCES RAM(id) ON DELETE SET NULL ON UPDATE CASCADE, proc_id INTEGER REFERENCES processor(id) ON DELETE SET NULL ON UPDATE CASCADE);
 
-CREATE TABLE Tablets (pid INTEGER DEFAULT 1 PRIMARY KEY REFERENCES Electronic_Goods(pid), cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, os VARCHAR(100), internal_memory VARCHAR(100),screen_type VARCHAR(100), three_g VARCHAR(100), wifi VARCHAR(100), battery VARCHAR(100), screen_size VARCHAR(100), screen_resolution VARCHAR(100), ram_id INTEGER REFERENCES RAM(id), proc_id INTEGER REFERENCES processor(id), gcard_id INTEGER REFERENCES graphics_card(id));
+CREATE TABLE Tablets (pid INTEGER DEFAULT 1 PRIMARY KEY REFERENCES Electronic_Goods(pid) ON DELETE CASCADE ON UPDATE CASCADE, cost INTEGER CHECK (cost >= 0), weight REAL CHECK (weight >= 0), manf VARCHAR(50) NOT NULL, pname VARCHAR(50) NOT NULL, os VARCHAR(100), internal_memory VARCHAR(100),screen_type VARCHAR(100), three_g VARCHAR(100), wifi VARCHAR(100), battery VARCHAR(100), screen_size VARCHAR(100), screen_resolution VARCHAR(100), ram_id INTEGER REFERENCES RAM(id) ON DELETE SET NULL ON UPDATE CASCADE, proc_id INTEGER REFERENCES processor(id) ON DELETE SET NULL ON UPDATE CASCADE, gcard_id INTEGER REFERENCES graphics_card(id) ON DELETE SET NULL ON UPDATE CASCADE);
 
 CREATE TABLE Reviews (review_id INTEGER PRIMARY KEY REFERENCES review(id), egood_id INTEGER REFERENCES Electronic_Goods(pid), username VARCHAR(50) REFERENCES users(username)); 
 
@@ -78,7 +78,7 @@ INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i5 3230
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i5 3317U','1.7 GHz','2' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i5','1.6 GHz','2' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i7','1.8 GHz',null );
-INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel',null,'600 MHz',null );
+INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','lol','600 MHz',null );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Apple','A5','1 Ghz','2' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i7-4700MQ','2.4 GHz',null );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Qualcomm','Snapdragon MSM8960','1.5 GHz','2' );
@@ -104,7 +104,7 @@ INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i3','2.
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Pentium Dual Core (3rd Generation)','2.4 GHz','2' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Mediatek','MT8125','1.2 GHz','4' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('ARM','Cyclone','1.3 GHz','2' );
-INSERT INTO processor(manf,pname,clock_speed,cores) values('ARM',null,'369 MHz',null );
+INSERT INTO processor(manf,pname,clock_speed,cores) values('ARM','ftw','369 MHz',null );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('APU','Quad Core A10','2.3 GHz and with turbo boost upto 3.2 GHz','4' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('Intel','Core i3-3327U','1.9 GHz','2' );
 INSERT INTO processor(manf,pname,clock_speed,cores) values('ARM','Cortex-A9','1 GHz','2' );
@@ -259,7 +259,7 @@ INSERT INTO Tablets(manf,pname,cost,weight,os,screen_type,three_g,internal_memor
 
 
 
-INSERT INTO Users(name, username, password, emailid, role) VALUES ('Nishant', 'nnori', 'littleduck23', 'nnori@cse.iitb.ac.in', 'normal');
+INSERT INTO Users(name, username, password, emailid, role) VALUES ('Nishant', 'nnori', 'littleduck23', 'nnori@cse.iitb.ac.in', 'admin');
 INSERT INTO Users(name, username, password, emailid, role) VALUES ('Harsha', 'harshavardhan', 'mango&cyanide', 'harshavardhan@cse.iitb.ac.in', 'admin');
 INSERT INTO Users(name, username, password, emailid, role) VALUES ('Charan', 'cherry', '@tinkle12', 'charan@cse.iitb.ac.in', 'normal');
 INSERT INTO Users(name, username, password, emailid, role) VALUES ('Dev Narayan', 'dn', 'h5sysad\m/', 'devn@cse.iitb.ac.in', 'admin');
