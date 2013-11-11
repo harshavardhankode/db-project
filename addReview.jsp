@@ -2,11 +2,60 @@
 <%@ page import="java.io.*" %>
 <%@ page import="java.lang.*" %>
 
-<html>
-	<head>
-		<title> Add a laptop </title>
-	</head>
-	<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+   
+    <style type="text/css">
+		<%@ include file="dist/css/bootstrap.min.css" %>
+		<%@ include file="dist/starter-template.css" %>
+		<%@ include file="dist/signin.css" %>
+	</style>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+          	<li class=active><a class="navbar-brand" href="index.jsp">IEDb</a></li>
+            <li><a href="searchlaptops.jsp">Search</a></li>
+            <li><a href="about.jsp">About</a></li>
+            <% if (session.getAttribute("permission")==null) {
+            %>
+            <li><a href="login.jsp">Log In</a></li>
+            <li><a href="signup.jsp" >Sign Up</a></li>
+            <%
+            }
+            else{
+            	if(session.getAttribute("permission").equals("admin")){		
+			%>     
+					<li><a href="addLaptopInterface.jsp" >Admin Interface</a></li>
+			<%
+					}
+			%> 
+            	<li><a >Logged In as  <%=session.getAttribute("name") %></a></li> 
+            	<li><a href="logout.jsp" >Log out</a></li>
+            <%}
+            %>             
+          </ul>
+        </div>
+      </div>
+    </div>
 
 		<%							
 			try 
@@ -42,7 +91,12 @@
 						String r_id = rs.getString("review_id");
 						query = "UPDATE review SET content = '"+ content +"',rating =" + rating +" WHERE id = " + r_id +";";
 						s.executeUpdate(query);
-						out.println("<h2> Successfully updated your review </h2> ");
+						out.println("<h2 class=\"starter-template\"> Successfully updated your review </h2> ");
+			%>
+						<form name="loginForm" method="post" action="displayProduct.jsp?id=<%= pid %>" class="form-signin form-new">
+							<button class="btn btn-lg btn-primary">Back</button>		
+						</form>			
+			<%
 
 					}
 					else{
@@ -54,8 +108,12 @@
 						String review_id = rs.getString(1);	
 						query = "INSERT INTO reviews(review_id,username,egood_id) values(" +review_id+ ",'"+userName+"',"+pid+")";
 						s.executeUpdate(query);
-						out.println("<h2> Successfully Added your review </h2> ");					
-					}
+						out.println("<h2 class=\"starter-template\"> Successfully Added your review </h2> ");
+			%>
+						<form name="loginForm" method="post" action="displayProduct.jsp?id=<%= pid %>" class="form-signin form-new">
+						<button class="btn btn-lg btn-primary ">Back</button>
+						</form>				
+			<%		}
 
 				}
 				

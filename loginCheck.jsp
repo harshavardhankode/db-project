@@ -20,12 +20,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">IEDb</a>
+           
         </div>
         <div class="collapse navbar-collapse navbar-fixed">
           <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="index.jsp">IEDb</a></li>
             <li><a href="searchlaptops.jsp">Search</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.jsp">About</a></li>
             
 		<%
 			try 
@@ -58,7 +59,7 @@
 		<%
 					}
 		%> 
-							<li><a >Logged In as  <%=rs.getString(1) %></a></li> 
+							<li class="active"><a >Logged In as  <%=rs.getString(1) %></a></li> 
 							<li><a href="logout.jsp" >Log out</a></li>
 		
 				  		</ul>
