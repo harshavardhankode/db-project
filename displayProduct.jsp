@@ -14,13 +14,12 @@
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/nishant";
-				String username = "nishant"; // Enter your PostgreSQL username
-				String password = "newpassword"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/db_project";
+				String username = "srichaitanya"; // Enter your PostgreSQL username
+				String password = "pass1234"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);
-
 
 				String product_id = request.getParameter("id");	
 	
@@ -141,7 +140,7 @@
 
 
 		%>
-					<h3> RAM </h>
+					<h2> RAM </h2>
 					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Size </td> <td> <%=rs1.getString("size") %> </td> </tr>
@@ -159,7 +158,7 @@
 
 					rs1.next();
 		%>		
-					<h3> Processor </h3>
+					<h2> Processor </h2>
 					<table class="table table-striped table-bordered table-nonfluid"> 
 						<tr> <th> Attribute </th> <th> Value </th> </tr>
 						<tr> <td> Manufacturer </td> <td> <%=rs1.getString("manf") %> </td> </tr>

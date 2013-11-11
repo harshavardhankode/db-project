@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title> Add a laptop </title>
+		<title> Add a tablet </title>
 	</head>
 	<body>
 		<%!
@@ -54,13 +54,13 @@
 					String cost_in = convert_string_int(request.getParameter("cost"));	
 					String weight_in = convert_string_int(request.getParameter("weight"));
 					String os_in = convert_string(request.getParameter("OS"));	
-					String hard_disk_in = convert_string(request.getParameter("hard_disk"));	
+					String internal_memory_in = convert_string(request.getParameter("internal_memory"));	
 					String s_size_in = convert_string(request.getParameter("s_size"));	
-					String s_resol_in = convert_string(request.getParameter("s_resol"));	
-					String speakers_in = convert_string(request.getParameter("speakers"));		
+					String s_resol_in = convert_string(request.getParameter("s_resol"));
+					String s_type_in = convert_string(request.getParameter("s_type"));	
+					String three_g_in = convert_string(request.getParameter("three_g"));		
 					String battery_in = convert_string(request.getParameter("battery"));		
 					String wifi_in = convert_string(request.getParameter("wifi"));	
-					String chipset_in = convert_string(request.getParameter("chipset"));		
 				
 					String ram_size_in = convert_string(request.getParameter("ram_size"));	
 					String ram_type_in = convert_string(request.getParameter("ram_type"));	
@@ -199,16 +199,16 @@
 					}
 					out.println("<h2>"+ g_id + "</h2>");
 					
-					query = "SELECT * FROM Laptops WHERE manf = " + manf_in + "AND pname = "+ pname_in;
+					query = "SELECT * FROM Tablets WHERE manf = " + manf_in + "AND pname = "+ pname_in;
 					rs = s.executeQuery(query);
 					if(rs.next()){
-						out.println("<h2> laptop already exists. Info Updated</h2>");
-						query = "UPDATE Laptops SET(cost, weight, manf, pname, os, speakers, network_adaptor, chipset, battery, screen_size, hard_disk, screen_resolution, ram_id, proc_id, gcard_id) = (" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + speakers_in + "," + wifi_in + "," + chipset_in + "," + battery_in + "," + s_size_in + "," + hard_disk_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ") WHERE manf = " + manf_in + "AND pname = "+ pname_in;
+						out.println("<h2> Tablet already exists. Info Updated</h2>");
+						query = "UPDATE Tablets SET(cost, weight, manf, pname, os, internal_memory, three_g, wifi , battery, screen_size, screen_type , screen_resolution, ram_id, proc_id, gcard_id) = (" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," +internal_memory_in + "," + three_g_in + "," + wifi_in  + "," + battery_in + "," + s_size_in + "," + s_type_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ") WHERE manf = " + manf_in + "AND pname = "+ pname_in;
 					}
 					else{
-						query = "INSERT INTO Laptops(cost, weight, manf, pname, os, speakers, network_adaptor, chipset, battery, screen_size, hard_disk, screen_resolution, ram_id, proc_id, gcard_id) VALUES(" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + speakers_in + "," + wifi_in + "," + chipset_in + "," + battery_in + "," + s_size_in + "," + hard_disk_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ");";
+						query = "INSERT INTO Tablets (cost, weight, manf, pname, os, internal_memory, three_g, wifi , battery, screen_size, screen_type , screen_resolution, ram_id, proc_id, gcard_id)  VALUES(" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," +internal_memory_in + "," + three_g_in + "," + wifi_in  + "," + battery_in + "," + s_size_in + "," + s_type_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ");";
 						s.executeUpdate(query);
-						out.println("<h2> Successfully added Laptop.</h2>");
+						out.println("<h2> Successfully added Tablet.</h2>");
 					}
 					myConnection.close();
 				}

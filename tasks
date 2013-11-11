@@ -6,4 +6,10 @@ Dropdowns
 Admin Interface
 	-Users
 	-Tablets, Mobiles
+	-Deleting a product
 
+Foreign Key
+	- Setnull/Cascade
+
+
+Script for autofilling header?

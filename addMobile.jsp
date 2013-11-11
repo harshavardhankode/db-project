@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title> Add a laptop </title>
+		<title> Add a Mobile </title>
 	</head>
 	<body>
 		<%!
@@ -54,13 +54,11 @@
 					String cost_in = convert_string_int(request.getParameter("cost"));	
 					String weight_in = convert_string_int(request.getParameter("weight"));
 					String os_in = convert_string(request.getParameter("OS"));	
-					String hard_disk_in = convert_string(request.getParameter("hard_disk"));	
+					String internal_memory_in = convert_string(request.getParameter("internal_memory"));	
 					String s_size_in = convert_string(request.getParameter("s_size"));	
 					String s_resol_in = convert_string(request.getParameter("s_resol"));	
-					String speakers_in = convert_string(request.getParameter("speakers"));		
-					String battery_in = convert_string(request.getParameter("battery"));		
-					String wifi_in = convert_string(request.getParameter("wifi"));	
-					String chipset_in = convert_string(request.getParameter("chipset"));		
+					String s_type_in = convert_string(request.getParameter("s_type"));		
+					String sim_in = convert_string(request.getParameter("sim"));				
 				
 					String ram_size_in = convert_string(request.getParameter("ram_size"));	
 					String ram_type_in = convert_string(request.getParameter("ram_type"));	
@@ -69,15 +67,10 @@
 					String p_pname_in = convert_string(request.getParameter("p_pname"));	
 					String cores_in = convert_string(request.getParameter("cores"));	
 					String clock_speed_in = convert_string(request.getParameter("clock_speed"));	
-				
-					String g_manf_in = convert_string(request.getParameter("g_manf"));
-					String g_pname_in = convert_string(request.getParameter("g_pname"));		
-					String g_mem_in = convert_string(request.getParameter("g_mem"));	
-					String g_type_in = convert_string(request.getParameter("g_type"));
-					
+
 					String ram_id;
 					String proc_id;
-					String g_id;
+					String g_id = "null";
 					
 							
 					
@@ -154,61 +147,21 @@
 					}
 					out.println("<h2>"+ proc_id + "</h2>");
 					
-					query = "SELECT id  FROM graphics_card WHERE TRUE";
 
-					if(g_pname_in.equals("null")){
-						query = query+" AND pname is null";
-					}
-					else{
-						query = query+" AND pname = " + g_pname_in;
-					}
-
-					if(g_manf_in.equals("null")){
-						query = query+" AND manf is null";
-					}
-					else{
-						query = query+" AND manf = " + g_manf_in;
-					}
-
-					if(g_mem_in.equals("null")){
-						query = query+" AND memory is null";
-					}
-					else{
-						query = query+" AND memory = " + g_mem_in;
-					}
-
-					if(g_type_in.equals("null")){
-						query = query+" AND type is null";
-					}
-					else{
-						query = query+" AND type = " + g_type_in;
-					}
-
-					rs = s.executeQuery(query);
-					if (rs.next()){
-						g_id = rs.getString(1);
-					}
-					else{
-						query = "INSERT INTO graphics_card(manf,pname, memory, type) VALUES(" + g_manf_in + "," + g_pname_in + "," + g_mem_in + "," + g_type_in + ");";
-						s.executeUpdate(query);
-						query = "SELECT max(id) FROM graphics_card;";
-						rs = s.executeQuery(query);
-						rs.next();
-						g_id = rs.getString(1);
-						
-					}
-					out.println("<h2>"+ g_id + "</h2>");
 					
-					query = "SELECT * FROM Laptops WHERE manf = " + manf_in + "AND pname = "+ pname_in;
+					query = "SELECT * FROM mobile_phones WHERE manf = " + manf_in + "AND pname = "+ pname_in;
 					rs = s.executeQuery(query);
 					if(rs.next()){
-						out.println("<h2> laptop already exists. Info Updated</h2>");
-						query = "UPDATE Laptops SET(cost, weight, manf, pname, os, speakers, network_adaptor, chipset, battery, screen_size, hard_disk, screen_resolution, ram_id, proc_id, gcard_id) = (" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + speakers_in + "," + wifi_in + "," + chipset_in + "," + battery_in + "," + s_size_in + "," + hard_disk_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ") WHERE manf = " + manf_in + "AND pname = "+ pname_in;
+
+						query = "UPDATE Mobile_phones SET(cost, weight, manf, pname, os,internal_memory, screen_type,  screen_size,sim, screen_resolution, ram_id, proc_id) = (" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + internal_memory_in + "," + s_type_in + ","   + s_size_in + "," + sim_in + "," + s_resol_in + "," + ram_id + "," + proc_id + ") WHERE manf = " + manf_in + "AND pname = "+ pname_in;
+						s.executeUpdate(query);						
+
+						out.println("<h2> Mobile already exists. Info Updated </h2>");
 					}
 					else{
-						query = "INSERT INTO Laptops(cost, weight, manf, pname, os, speakers, network_adaptor, chipset, battery, screen_size, hard_disk, screen_resolution, ram_id, proc_id, gcard_id) VALUES(" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + speakers_in + "," + wifi_in + "," + chipset_in + "," + battery_in + "," + s_size_in + "," + hard_disk_in + "," + s_resol_in + "," + ram_id + "," + proc_id + "," + g_id + ");";
+						query = "INSERT INTO mobile_phones(cost, weight, manf, pname, os,internal_memory, screen_type,  screen_size,sim, screen_resolution, ram_id, proc_id) VALUES(" + cost_in + "," + weight_in + "," + manf_in + "," + pname_in + "," + os_in + "," + internal_memory_in + "," + s_type_in + ","   + s_size_in + "," + sim_in + "," + s_resol_in + "," + ram_id + "," + proc_id + ");";
 						s.executeUpdate(query);
-						out.println("<h2> Successfully added Laptop.</h2>");
+						out.println("<h2> Successfully added Mobile.</h2>");
 					}
 					myConnection.close();
 				}
