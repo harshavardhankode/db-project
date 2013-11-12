@@ -7,10 +7,10 @@
 	<head>
 		<title>Mobile Search Page</title>
 		<meta charset="utf-8" />
-		<style type="text/css">
-   			<%@ include file="dist/css/bootstrap.min.css" %>
-   			<%@ include file="dist/signin.css" %>
-  		</style>
+		
+   			<link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.min.css">
+   			<link rel="stylesheet" type="text/css" href="./dist/signin.css">
+  		
 	</head>
 	<body>
 	

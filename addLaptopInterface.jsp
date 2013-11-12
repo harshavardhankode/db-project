@@ -2,11 +2,11 @@
 <head>
  <title>Add a laptop</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <style type="text/css">
-   <%@ include file="dist/css/bootstrap.min.css" %>
-   <%@ include file="dist/signin.css" %>
-   <%@ include file="dist/starter-template.css" %>
-  </style>
+  
+   <link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="./dist/signin.css">
+   <link rel="stylesheet" type="text/css" href="./dist/starter-template.css">
+  
 </head>
 
 <% if (!(session.getAttribute("permission")==null) && session.getAttribute("permission").equals("admin")){

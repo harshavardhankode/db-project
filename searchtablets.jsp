@@ -7,10 +7,10 @@
 	<head>
 		<title>Tablet Search Page</title>
 		<meta charset="utf-8" />
-		<style type="text/css">
-   			<%@ include file="dist/css/bootstrap.min.css" %>
-   			<%@ include file="dist/signin.css" %>
-  		</style>
+		
+   			<link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.min.css">
+   			<link rel="stylesheet" type="text/css" href="./dist/signin.css">
+  		
 	</head>
 	<body>
 	
@@ -79,9 +79,9 @@
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/danny";
-				String username = "danny"; // Enter your PostgreSQL username
-				String password = "dnatpostgres"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/db_project";
+				String username = "srichaitanya"; // Enter your PostgreSQL username
+				String password = "pass1234"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);

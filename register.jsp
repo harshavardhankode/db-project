@@ -5,11 +5,11 @@
 <head>
  <title>IIT Bombay Electronics Database Sign Up</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <style type="text/css">
-   <%@ include file="dist/css/bootstrap.min.css" %>
-   <%@ include file="dist/signin.css" %>
-   <%@ include file="dist/starter-template.css" %>
-  </style>
+  
+   <link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="./dist/signin.css">
+   <link rel="stylesheet" type="text/css" href="./dist/starter-template.css">
+  
 </head>
 
 <body>
@@ -33,9 +33,9 @@
 			try 
 			{
 				String driver = "org.postgresql.Driver";
-				String url = "jdbc:postgresql://localhost:5432/nishant";
-				String username = "nishant"; // Enter your PostgreSQL username
-				String password = "newpassword"; // Enter your PostgreSQL password
+				String url = "jdbc:postgresql://localhost:5432/db_project";
+				String username = "srichaitanya"; // Enter your PostgreSQL username
+				String password = "pass1234"; // Enter your PostgreSQL password
 				Connection myConnection = null;
 				Class.forName(driver).newInstance();
 				myConnection = DriverManager.getConnection(url,username,password);

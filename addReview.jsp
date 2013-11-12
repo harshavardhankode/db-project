@@ -10,11 +10,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
    
-    <style type="text/css">
-		<%@ include file="dist/css/bootstrap.min.css" %>
-		<%@ include file="dist/starter-template.css" %>
-		<%@ include file="dist/signin.css" %>
-	</style>
+    
+		<link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./dist/starter-template.css">
+		<link rel="stylesheet" type="text/css" href="./dist/signin.css">
+	
 
   </head>
 
